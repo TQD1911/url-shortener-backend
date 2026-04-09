@@ -5,7 +5,7 @@ const app = express();
 app.use(express.json());
 
 // TODO: replace with your own MongoDB connection string
-mongoose.connect("mongodb://127.0.0.1:27017/url_shortener");
+mongoose.connect("mongodb+srv://URLShortenerBE_db:191106@urlshortenerbe.ps0ms99.mongodb.net/url_shortener");
 
 const urlSchema = new mongoose.Schema({
   originalUrl: String,
@@ -47,6 +47,8 @@ app.get("/:shortCode", async (req, res) => {
   res.redirect(url.originalUrl);
 });
 
-app.listen(3000, () => {
-  console.log("Server running on http://localhost:3000");
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
