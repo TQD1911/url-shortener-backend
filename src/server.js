@@ -47,6 +47,10 @@ app.get("/:shortCode", async (req, res) => {
   res.redirect(url.originalUrl);
 });
 
+app.get("/", (req, res) => {
+  res.send("URL Shortener API is running! Use /api/urls to get started");
+});
+
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
